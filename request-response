@@ -1,0 +1,149 @@
+const apis = [
+  
+   	    // Admin login API
+           {
+	        request: {
+	            type: 'POST',
+	            url: '/login',
+	            body: {
+	                type: 1,//1-user, 2-chef
+	                email: '',
+	                passwd: ''
+	            },
+	        },
+	        response: {
+	            code: 500,//200
+	            status: 'fail',//success
+	            message: 'error message'//success message
+	        }
+	    },
+	    // Admin signup api
+	    {
+	        request: {
+	            type: 'POST',
+	            url: '/signup',
+	            body: {
+	                type: 1,//1-user, 2-chef
+	                name: '',// name of the uset
+	                email: '',//validate email
+	                passwd: ''//min 6 character, with special character
+	            },
+	        },
+	        response: {
+	            code: 500,//200
+	            status: 'fail',//success
+	            message: 'error message'//success message
+	        }
+	    },
+	    // Admin: your menu
+	    {
+	        request: {
+	            type: 'GET',
+	            url: '/admin-menu',
+	            body: {
+	                token: ''//user token
+	            },
+	        },
+	        response: {
+	            code: 200,
+	            status: 'success',
+	            message: 'success message',
+	            data: [{
+	                image: ['url1','url2'],
+	                title: '',
+	                price: '',
+	                chef: ''
+	            },{
+	                image: ['url1','url2'],
+	                title: '',
+	                price: '',
+	                chef: ''
+	            }]
+	        }
+	    },
+        // Admin: Add Product
+        {
+	        request: {
+	            type: 'POST',
+	            url: "/admin/item",
+	            Headers: {
+	                token: "",//user token
+	            },
+                body: {
+				    image: ['url1','url2'],
+	                title: '',
+	                price: '',
+	                chef: '',
+				},
+			},	
+	        response: {
+				code: 200,
+	            status: 'success',
+	            message: 'success message',
+			}
+		}, 
+		// Admin: your order
+	     {
+	        request: {
+	            type: 'GET',
+	            url: "/admin/orders",
+	            header: {
+	                token: ''//user token
+	            },
+			    response: {
+	            code: 200,
+	            status: success,
+	            message: "success message",
+				date: [
+					{
+						orderId: "",
+						items: [],
+						customerName: "",
+						price: "",
+					}
+				]
+	        }			 
+			},
+		}
+		// Admin: New Order
+		{
+	        request: {
+	            type: 'GET',
+	            url: "/admin/orders",
+	            header: {
+	                token: ''//user token
+				},
+			    response: {
+	            code: 200,
+	            status: success,
+	            message: "success message",
+				date: [
+					{
+						orderId: "",
+						items: [],
+						customerName: "",
+						price: "",
+					}
+				]
+	        }			 
+			},
+		}  
+		// Admin: New Order Action
+		  {
+			request: {
+				type: "POST",
+				url: "/admin/order/new",
+				header: {
+	                token: ''//user token
+				},
+				body: {
+					action: 1// 1 - accepted, 2 - rejected
+				}
+			},
+			response: {
+                code: 200,
+	            status: success,
+	            message: "success message",
+			}
+		}   
+	]
